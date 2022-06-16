@@ -35,40 +35,42 @@ export const Card = (props) => {
   console.log(year, day, mon);
 
   return (
-    <div className='card_section'>
+    <div className="card_section">
       <div
         onMouseEnter={() => setShow(true)}
         onMouseLeave={() => setShow(false)}
-        className='card_header'>
-        <div className={show ? " active" : ""}>
+        className="card_header"
+      >
+        <div className="image__hover">
           <img
             onClick={handleOpen}
             src={props.image}
-            alt='card_image'
-            className={show ? "card_image active" : "card_image"}
+            alt="card_image"
+            className={show ? "card_image" : "card_image"}
           />
+          {show && (
+            <div onClick={handleOpen} className="learn_more__container">
+              <p className="learn_more">Learn More</p>
+            </div>
+          )}
         </div>
-        {show && (
-          <div onClick={handleOpen} className='learn_more'>
-            Learn More
-          </div>
-        )}
-        <div className='dot-section'>
-          <div className='blue'></div>
-          <div className='yellow'></div>
+
+        <div className="dot-section">
+          <div className="blue"></div>
+          <div className="yellow"></div>
         </div>
       </div>
-      <div className='card_content'>
-        <div className='card_content_heading'>{props.title}</div>
-        <div className='card_content_description'>{props.content}</div>
+      <div className="card_content">
+        <div className="card_content_heading">{props.title}</div>
+        <div className="card_content_description">{props.content}</div>
       </div>
-      <div className='card_footer'>
-        <div className='card_autor'>
+      <div className="card_footer">
+        <div className="card_autor">
           <span>
             {props.name}-{props.role}
           </span>
         </div>
-        <div className='card_date'>{`${mon} ${day} , ${year} `}</div>
+        <div className="card_date">{`${mon} ${day} , ${year} `}</div>
       </div>
       <BasicModal
         open={open}
